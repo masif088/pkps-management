@@ -9,19 +9,16 @@ class FormTime extends Component
 {
     public $title;
     public $model;
-    public $time;
 
     /**
      * FormTextarea constructor.
      * @param $title
      * @param $model
-     * @param $time
      */
-    public function __construct($title, $model, $time)
+    public function __construct($title, $model )
     {
         $this->title = $title;
         $this->model = $model;
-        $this->time = $time;
     }
 
     /**

@@ -8,6 +8,33 @@ $links = [
     [
         "href" => [
             [
+                "section_text" => "Manage Product",
+                "section_list" => [
+                    ["href" => "admin.product.index", "text" => "Data Product"],
+                    ["href" => "admin.product.create", "text" => "Buat Product"]
+                ]
+            ],
+            [
+                "section_text" => "Distribution",
+                "section_list" => [
+                    ["href" => "admin.distribution.index", "text" => "Data Distribution"],
+                    ["href" => "admin.distribution.create", "text" => "Buat Distribution"]
+                ]
+            ],
+            [
+                "section_text" => "Keuangan",
+                "section_list" => [
+                    ["href" => "admin.budget.index", "text" => "Data Keuangan"],
+                    ["href" => "admin.budget.create", "text" => "Buat Keuangan"]
+                ]
+            ],
+        ],
+        "text" => "PKPS",
+        "is_multi" => true,
+    ],
+    [
+        "href" => [
+            [
                 "section_text" => "User",
                 "section_list" => [
                     ["href" => "admin.user", "text" => "Data User"],

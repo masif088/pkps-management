@@ -1,4 +1,4 @@
-<div class="form-group col-span-6 sm:col-span-5" wire:ignore>
+<div class="form-group col-span-6 sm:col-span-5" wire:ignore xmlns:wire="http://www.w3.org/1999/xhtml">
     <label>{{$title}}</label>
     <div class="input-group">
         <div class="input-group-prepend">
@@ -6,29 +6,22 @@
                 <i class="fas fa-clock"></i>
             </div>
         </div>
-        <input id="{{str_replace(".", "", $model)}}" type="text" class="form-control timepicker" />
+        <input id="{{str_replace(".", "", $model)}}" type="text" class="form-control timepicker"/>
         @error($model) <span class="error">{{ $message }}</span> @enderror
     </div>
 
     <script>
         document.addEventListener('livewire:load', function () {
-            @if($time!='')
-            var time = @this.get('{{$model}}');
-            time = time.toString().match(/^([01]\d|2[0-3])(:)([0-5]\d)(:[0-5]\d)?$/) || [time];
-            if (time.length > 1) {
-                time = time.slice(1);
-                time[5] = +time[0] < 12 ? 'AM' : 'PM'; // Set AM/PM
-                time[0] = +time[0] % 12 || 12; // Adjust hours
+            if (@this.get('{{$model}}') != '') {
+                let time = @this.get('{{$model}}');
+                time = time.toString().match(/^([01]\d|2[0-3])(:)([0-5]\d)(:[0-5]\d)?$/) || [time];
+                if (time.length > 1) {
+                    time = time.slice(1);
+                    time[5] = +time[0] < 12 ? 'AM' : 'PM'; // Set AM/PM
+                    time[0] = +time[0] % 12 || 12; // Adjust hours
+                }
+                $("#{{str_replace(".", "", $model)}}").timepicker('setTime', time.join(''));
             }
-            $("#{{str_replace(".", "", $model)}}").timepicker('setTime', time.join(''));
-            @endif
-            {{--$("#{{str_replace(".", "", $model)}}").timepicker({--}}
-            {{--    icons:--}}
-            {{--        {--}}
-            {{--            up: 'fa fa-angle-up',--}}
-            {{--            down: 'fa fa-angle-down'--}}
-            {{--        },--}}
-            {{--})--}}
             $(".timepicker").datetimepicker({
                 icons:
                     {

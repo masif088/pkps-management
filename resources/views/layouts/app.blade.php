@@ -14,6 +14,7 @@
         <!-- Styles -->
         <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans&family=Nunito:wght@400;600;700&family=Open+Sans&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="{{ asset('vendor/bootstrap.min.css') }}">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
         <link rel="stylesheet" href="{{ asset('vendor/summernote/dist/summernote-bs4.css')}}">
         <link rel="stylesheet" href="{{ asset('css/tailwind.css') }}">
         <link rel="stylesheet" href="{{ asset('stisla/css/style.css') }}">
@@ -29,6 +30,11 @@
         <link rel="stylesheet" href="https://kit-free.fontawesome.com/releases/latest/css/free-v4-font-face.min.css" media="all">
         <link rel="stylesheet" href="https://kit-free.fontawesome.com/releases/latest/css/free.min.css" media="all">
         <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.7.14/css/bootstrap-datetimepicker.min.css">
+
+
         <livewire:styles />
 
         <!-- Scripts -->
@@ -62,13 +68,17 @@
         @stack('modals')
 
         <!-- General JS Scripts -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.15.1/moment.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.7.14/js/bootstrap-datetimepicker.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-        <script src="{{ asset('stisla/js/modules/jquery.min.js') }}"></script>
+{{--        <script src="{{ asset('stisla/js/modules/jquery.min.js') }}"></script>--}}
         <script defer async src="{{ asset('stisla/js/modules/tooltip.js') }}"></script>
-        <script src="{{ asset('stisla/js/modules/bootstrap.min.js') }}"></script>
+{{--        <script src="{{ asset('stisla/js/modules/bootstrap.min.js') }}"></script>--}}
 
         <script defer src="{{ asset('stisla/js/modules/jquery.nicescroll.min.js') }}"></script>
-        <script defer src="{{ asset('stisla/js/modules/moment.min.js') }}"></script>
+{{--        <script defer src="{{ asset('stisla/js/modules/moment.min.js') }}"></script>--}}
         <script defer src="{{ asset('stisla/js/modules/marked.min.js') }}"></script>
         <script defer src="{{ asset('vendor/notyf/notyf.min.js') }}"></script>
         <script defer src="{{ asset('vendor/sweetalert/sweetalert.min.js') }}"></script>
@@ -76,7 +86,9 @@
         <script defer src="{{asset('vendor/summernote/dist/summernote-bs4.js')}}"></script>
         <script defer src="{{asset('vendor/daterangepicker/daterangepicker.js')}}"></script>
         <script defer src="{{asset('vendor/chart.js/dist/Chart.min.js')}}"></script>
-        <script src="//cdnjs.cloudflare.com/ajax/libs/numeral.js/2.0.6/numeral.min.js"></script>
+{{--        <script src="//cdnjs.cloudflare.com/ajax/libs/numeral.js/2.0.6/numeral.min.js"></script>--}}
+
+
         <script src="{{asset('vendor/bootstrap-timepicker/js/bootstrap-timepicker.min.js')}}"></script>
 
         <script src="{{ asset('stisla/js/stisla.js') }}"></script>
@@ -144,6 +156,12 @@
             }
 
             document.addEventListener('DOMContentLoaded', () => {
+                this.livewire.on('redirect', data => {
+                    setTimeout(function () {
+                        this.location.href = data; //will redirect to your data page (an ex: data.html)
+                    }, 2000); //will call the function after 2 secs.
+                })
+
                 this.livewire.on('swal:modal', data => {
                     SwalModal(data.icon, data.title, data.text)
                 })

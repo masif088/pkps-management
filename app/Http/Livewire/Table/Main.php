@@ -51,6 +51,60 @@ class Main extends Component
                     ])
                 ];
                 break;
+            case 'distribution':
+                $distributions = $this->model::search($this->search)
+                    ->orderBy($this->sortField, $this->sortAsc ? 'asc' : 'desc')
+                    ->paginate($this->perPage);
+
+                return [
+                    "view" => 'livewire.table.distribution',
+                    "distributions" => $distributions,
+                    "data" => array_to_object([
+                        'href' => [
+                            'create_new' => route('admin.distribution.create'),
+                            'create_new_text' => 'Buat User Baru',
+                            'export' => '#',
+                            'export_text' => 'Export'
+                        ]
+                    ])
+                ];
+                break;
+            case 'product':
+                $products = $this->model::search($this->search)
+                    ->orderBy($this->sortField, $this->sortAsc ? 'asc' : 'desc')
+                    ->paginate($this->perPage);
+
+                return [
+                    "view" => 'livewire.table.product',
+                    "products" => $products,
+                    "data" => array_to_object([
+                        'href' => [
+                            'create_new' => route('admin.product.create'),
+                            'create_new_text' => 'Buat User Baru',
+                            'export' => '#',
+                            'export_text' => 'Export'
+                        ]
+                    ])
+                ];
+                break;
+            case 'budget':
+                $budgets = $this->model::search($this->search)
+                    ->orderBy($this->sortField, $this->sortAsc ? 'asc' : 'desc')
+                    ->paginate($this->perPage);
+
+                return [
+                    "view" => 'livewire.table.budget',
+                    "budgets" => $budgets,
+                    "data" => array_to_object([
+                        'href' => [
+                            'create_new' => route('admin.budget.create'),
+                            'create_new_text' => 'Buat User Baru',
+                            'export' => '#',
+                            'export_text' => 'Export'
+                        ]
+                    ])
+                ];
+                break;
 
             default:
                 # code...

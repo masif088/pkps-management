@@ -10,6 +10,7 @@ class FormInput extends Component
     public $type;
     public $title;
     public $model;
+    public $disable;
 
     /**
      * FormInput constructor.
@@ -17,11 +18,12 @@ class FormInput extends Component
      * @param string $title
      * @param string $model
      */
-    public function __construct($type, $title, $model)
+    public function __construct($type, $title, $model,$disable=false)
     {
         $this->type = $type;
         $this->title = $title;
         $this->model = $model;
+        $this->disable=$disable;
     }
 
     /**

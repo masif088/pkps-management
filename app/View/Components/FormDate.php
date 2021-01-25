@@ -10,18 +10,21 @@ class FormDate extends Component
     public $type;
     public $title;
     public $model;
+    public $time;
 
     /**
      * FormInput constructor.
      * @param string $type
      * @param string $title
      * @param $model
+     * @param $time
      */
     public function __construct($type, $title, $model)
     {
         $this->type = $type;
         $this->title = $title;
         $this->model = $model;
+//        $this->time = $time;
     }
 
     /**

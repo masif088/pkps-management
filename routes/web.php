@@ -1,6 +1,9 @@
 <?php
 
-use App\Http\Controllers\Admin\BlogController;
+
+use App\Http\Controllers\Admin\BudgetController;
+use App\Http\Controllers\Admin\DistributionController;
+use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 use Laravel\Jetstream\Http\Controllers\CurrentTeamController;
@@ -27,16 +30,18 @@ Route::get('/dashboard', function () {
 Route::get('/', function () {
     return view('welcome');
 });
-//[ 'middleware' => [],'prefix'=>'admin' ]
-//Route::name('admin.')->middleware(['auth:sanctum', 'verified'])->prefix('admin/')->group(function() {
+
 Route::name('admin.')->prefix('admin')->middleware(['auth:sanctum','web', 'verified'])->group(function() {
     Route::view('/dashboard', "dashboard")->name('dashboard');
-    Route::resource('blog', BlogController::class);
-//    Route::middleware(['checkRole:1']){}
+
+    Route::resource('product', ProductController::class)->only(['index','create','edit']);
+    Route::resource('distribution', DistributionController::class)->only(['index','create','edit']);
+    Route::resource('budget', BudgetController::class)->only(['index','create','edit']);
+    Route::get('/budget/download/{id}',[\App\Http\Controllers\Admin\BudgetController::class,"download"])->name('budget.download');
+
     Route::get('/user', [ UserController::class, "index" ])->name('user');
     Route::view('/user/new', "pages.user.create")->name('user.new');
     Route::view('/user/edit/{userId}', "pages.user.edit")->name('user.edit');
-
 
     Route::group(['middleware' => config('jetstream.middleware', ['web'])], function () {
         Route::group(['middleware' => ['auth', 'verified']], function () {
