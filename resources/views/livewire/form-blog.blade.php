@@ -2,9 +2,8 @@
     <form wire:submit.prevent="create">
 
 {{--        <x-form-input type="text" title="title" model="blog.title"/>--}}
-        <x-form-date type="text" title="title" model="blog.title" type="datetimepicker"/>
+        <x-form-date title="title" model="blog.title" type="datetimepicker"/>
 
-        {{$blog['time']}}
         <x-form-time title="sa" model="blog.time" :time="$blog['time']"/>
 
         <x-form-daterange title="sa" model="blog.timeaaa" />

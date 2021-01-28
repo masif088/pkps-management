@@ -10,7 +10,6 @@ class FormDate extends Component
     public $type;
     public $title;
     public $model;
-    public $time;
 
     /**
      * FormInput constructor.
@@ -24,7 +23,6 @@ class FormDate extends Component
         $this->type = $type;
         $this->title = $title;
         $this->model = $model;
-//        $this->time = $time;
     }
 
     /**

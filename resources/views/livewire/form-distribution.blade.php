@@ -3,7 +3,7 @@
         <x-form-select :options="$optionUser" :selected="$data['user_id']" title="Kepada" model="data.user_id"/>
         <x-form-select :options="$optionStatus" :selected="$data['status']" title="Status" model="data.status"/>
         <x-form-textarea title="keterangan tambahan" model="data.note"/>
-        <x-form-date title="Tanggal" model="data.created_at" type="datepicker"/>
+        <x-form-date title="Tanggal" model="data.created_at" type="datetimepicker"/>
 {{--{{$data['created_at']}}--}}
         <x-form-select2 :options="$optionProduct" :selected="$product" title="list product" model="product"/>
 
