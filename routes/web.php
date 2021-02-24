@@ -5,6 +5,8 @@ use App\Http\Controllers\Admin\BudgetController;
 use App\Http\Controllers\Admin\DistributionController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\UserController;
+use App\Models\Contact;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use Laravel\Jetstream\Http\Controllers\CurrentTeamController;
 use Laravel\Jetstream\Http\Controllers\Livewire\ApiTokenController;
@@ -29,6 +31,11 @@ Route::get('/dashboard', function () {
 
 Route::get('/', function () {
     return view('welcome');
+})->name('beranda');
+
+Route::post('/contact',function(Request $request){
+    Contact::create($request->all());
+    return redirect(route('beranda'));
 });
 
 Route::name('admin.')->prefix('admin')->middleware(['auth:sanctum','web', 'verified'])->group(function() {
